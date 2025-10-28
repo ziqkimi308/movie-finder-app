@@ -1,22 +1,16 @@
-
-import { Outlet } from 'react-router'
-import './App.css'
-import { Card } from './components/Card'
-import { Footer } from './components/Footer'
-import { Header } from './components/Header'
-import { Index } from './components/Index'
+import { Outlet } from "react-router";
+import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
-
-  return (
-    <>
-	  {/* <Header />
-	  <Index />
-	  <Card />
-	  <Footer /> */}
-	  <Outlet />
-    </>
-  )
+	return (
+		<>
+			<Header />
+			<Outlet />
+			<Footer />
+		</>
+	);
 }
 
-export default App
+export default App;
