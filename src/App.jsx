@@ -7,7 +7,7 @@ function App() {
 	return (
 		<div className="min-h-screen flex flex-col dark:bg-slate-800">
 			<Header />
-			<main className="flex-grow">
+			<main className="grow">
 				<Outlet />
 			</main>
 			<Footer />

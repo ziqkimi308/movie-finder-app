@@ -56,3 +56,12 @@ export async function getSearch(movie_keyword) {
 
 	return data.results
 }
+
+// Fetch Individual Movie by Id
+export async function getMovieDetail(movie_id) {
+	const response = await fetch(`${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}`);
+	const data = await response.json();
+	// console.log(data.results)
+
+	return data
+}
