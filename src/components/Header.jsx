@@ -1,12 +1,23 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router";
-import { DarkModeIcon, LightModeIcon, LightModeIconTwo } from "../assets/Icons";
+import { Link, NavLink, useNavigate } from "react-router";
+import { DarkModeIcon, LightModeIconTwo } from "../assets/Icons";
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [darkMode, setDarkMode] = useState(
 		JSON.parse(localStorage.getItem("darkMode")) || false
 	);
+	const [searchTerm, setSearchTerm] = useState("");
+	const navigate = useNavigate();
+
+	const handleSearchSubmit = (event) => {
+		event.preventDefault();
+		if (searchTerm.trim()) {
+			navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
+			setSearchTerm("");
+			setMenuOpen(false);
+		}
+	};
 
 	useEffect(() => {
 		localStorage.setItem("darkMode", JSON.stringify(darkMode));
@@ -47,7 +58,10 @@ const Header = () => {
 						>
 							{darkMode ? <LightModeIconTwo /> : <DarkModeIcon />}
 						</button>
-						<div className="relative hidden md:block">
+						<form
+							onSubmit={handleSearchSubmit}
+							className="relative hidden md:block"
+						>
 							<div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
 								<svg
 									className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -69,11 +83,13 @@ const Header = () => {
 							<input
 								type="text"
 								id="search-navbar"
+								value={searchTerm}
+								onChange={(e) => setSearchTerm(e.target.value)}
 								className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								placeholder="Search..."
 								autoComplete="off"
 							/>
-						</div>
+						</form>
 						<button
 							data-collapse-toggle="navbar-search"
 							type="button"
@@ -106,7 +122,10 @@ const Header = () => {
 						} w-full md:flex md:w-auto md:order-1`}
 						id="navbar-search"
 					>
-						<div className="relative mt-3 md:hidden">
+						<form
+							onSubmit={handleSearchSubmit}
+							className="relative mt-3 md:hidden"
+						>
 							<div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
 								<svg
 									className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -127,11 +146,13 @@ const Header = () => {
 							<input
 								type="text"
 								id="search-navbar"
+								value={searchTerm}
+								onChange={(e) => setSearchTerm(e.target.value)}
 								className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								placeholder="Search..."
 								autoComplete="off"
 							/>
-						</div>
+						</form>
 						<ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
 							<li>
 								<NavLink

@@ -1,0 +1,11 @@
+SEARCH=`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${movie_keyword}`
+
+POPULAR=`${BASE_URL}/movie/popular?api_key=${API_KEY}`
+
+TOP_RATED=`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`
+
+UPCOMING=`${BASE_URL}/movie/upcoming?api_key=${API_KEY}`
+
+NOW_PLAYING=`${BASE_URL}/movie/now_playing?api_key=${API_KEY}`
+
+INDIVIDUAL=`${BASE_URL}/movie/{movie_id}?api_key=${API_KEY}`
