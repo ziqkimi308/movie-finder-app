@@ -1,3 +1,9 @@
+// Prepare proper Image path (unchanged)
+export function getImageUrl(path, size = "w500") {
+	if (!path) return "";
+	return `https://image.tmdb.org/t/p/${size}${path}`;
+}
+
 // Fetch Now Playing
 export async function getNowPlaying() {
 	const res = await fetch("/.netlify/functions/movies?category=now_playing");
