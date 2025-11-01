@@ -37,7 +37,7 @@ const Header = () => {
 
 	return (
 		<header>
-			<nav className="w-full bg-white border-b border-gray-300 dark:bg-gray-900">
+			<nav className="w-full bg-white border-b border-gray-300 dark:bg-gray-900 dark:border-0">
 				<div className="flex flex-wrap items-center justify-between mx-auto p-4">
 					<Link
 						to="/"

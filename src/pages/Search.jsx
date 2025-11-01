@@ -21,7 +21,7 @@ const Search = ({ getMovie = getSearch }) => {
 			<section className="max-w-7xl mx-auto pt-7">
 				<p className="text-3xl text-gray-700 dark:text-white">
 					{movies.length === 0
-						? `No result found for ${query}`
+						? `No result found for '${query}'`
 						: `Result for '${query}'`}
 				</p>
 			</section>
